@@ -63,8 +63,8 @@ const Highlight = () => {
                 data={data}
                 renderItem={i => renderItems(i)}
                 horizontal
-                ListHeaderComponent={<View style={{ justifyContent: 'center', flex: 1, width: 90, alignContent: 'center', alignItems: 'center' }}>
-                    <Text style={{color:'black',fontWeight:'bold',fontSize:17}}>Fixed meeting</Text><Text>without any restrictions</Text></View>}
+                ListHeaderComponent={<View style={{ justifyContent: 'center', flex: 1, width: 130,padding:9}}>
+                    <Text style={{color:'black',fontWeight:'bold',fontSize:17}}>Fixed meeting</Text><Text>without restrictions</Text></View>}
                 showsHorizontalScrollIndicator={false}
 
 

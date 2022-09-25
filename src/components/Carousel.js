@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import { Text, View, Dimensions, Image, Animated, PanResponder } from 'react-native';
+import { Text, View, Dimensions, Image, Animated, PanResponder, ToastAndroid } from 'react-native';
 import { getScreenWidth, getScreenHeight } from '../utils/responsive';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -11,8 +11,7 @@ const Users = [
   { id: "1", uri: require('../assets/images/1.png') },
   { id: "2", uri: require('../assets/images/2.png') },
   { id: "3", uri: require('../assets/images/3.png') },
-  // { id: "4", uri: require('../assets/images/4.png') },
-  // { id: "5", uri: require('../assets/images/5.png') },
+
 ]
 
 export default class Carousel extends React.Component {
@@ -81,6 +80,11 @@ export default class Carousel extends React.Component {
               this.position.setValue({ x: 0, y: 0 })
             })
           })
+          {  ToastAndroid.showWithGravity(
+            "KEEP",
+            ToastAndroid.LONG,
+            ToastAndroid.BOTTOM
+          )}
         }
         else if (gestureState.dx < -120) {
           Animated.spring(this.position, {
@@ -91,6 +95,11 @@ export default class Carousel extends React.Component {
               this.position.setValue({ x: 0, y: 0 })
             })
           })
+          {  ToastAndroid.showWithGravity(
+            "PASS",
+            ToastAndroid.LONG,
+            ToastAndroid.BOTTOM
+          )}
         }
         else {
           Animated.spring(this.position, {
@@ -113,6 +122,7 @@ export default class Carousel extends React.Component {
         return null
       }
       else if (i == this.state.currentIndex) {
+
 
         return (
           <Animated.View
@@ -147,15 +157,15 @@ export default class Carousel extends React.Component {
               style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }}
               source={item.uri} />
             <View style={{ position: 'absolute', height: getScreenHeight(47.5), width: getScreenWidth(94), padding: 10, alignSelf: 'center', margin: 10, borderRadius: 20, justifyContent: 'space-between' }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center',}}>
                 <Image
-                  style={{ height: 50, width: 50, resizeMode: 'cover', borderRadius: 25, borderWidth: 3, borderColor: '#FFBFBF', marginHorizontal: 10 }}
+                  style={{ height: 50, width: 50, resizeMode: 'cover', borderRadius: 25, borderWidth: 3, borderColor: '#FFBFBF', marginHorizontal: 7 }}
                   source={item.uri} />
                 <View style={{ width: 90, }}>
                   <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 17 }}>John Pride</Text><Text style={{ color: 'white' }}>24 Gangseo-gu, Seoul</Text>
                 </View>
               </View>
-              <View>
+              <View style={{padding:10}}>
                 <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 17 }}>Playing After Work</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <View style={{ borderWidth: 1, height: getScreenHeight(3.5), width: getScreenWidth(15), borderRadius: 20, justifyContent: 'center', alignItems: 'center', margin: 5, borderColor: "#ffff" }}>
@@ -249,10 +259,7 @@ export default class Carousel extends React.Component {
 
 
             </View>
-            {/* 
-            <Image
-              style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }}
-              source={item.uri} /> */}
+          
 
 
           </Animated.View>
